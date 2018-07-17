@@ -30,16 +30,31 @@ enum HttpClientMethodId {
 #define HTTP_REQUIRED_INPUTS_MESSAGE "All inputs and outputs must be provided for HTTP functions"
 
 extern "C" {
-    extern void jsHttpClientOpen(StringRef, StringRef, StringRef, UInt32, UInt32 *, Boolean *, Int32 *, StringRef);
-    extern void jsHttpClientClose(UInt32, Boolean *, Int32 *, StringRef);
-    extern void jsHttpClientAddHeader(UInt32, StringRef, StringRef, Boolean *, Int32 *, StringRef);
-    extern void jsHttpClientRemoveHeader(UInt32, StringRef, Boolean *, Int32 *, StringRef);
-    extern void jsHttpClientGetHeader(UInt32, StringRef, StringRef, Boolean *, Int32 *, StringRef);
-    extern void jsHttpClientHeaderExists(UInt32, StringRef, UInt32 *, StringRef, Boolean *, Int32 *, StringRef);
-    extern void jsHttpClientListHeaders(UInt32, StringRef, Boolean *, Int32 *, StringRef);
-    extern void jsHttpClientMethod(HttpClientMethodId, UInt32, StringRef, StringRef, TypeRef, StringRef*,
-                Int32 *, StringRef, StringRef, UInt32 *, Boolean *, Int32 *, StringRef, OccurrenceRef);
-    extern void jsHttpClientConfigCORS(UInt32, UInt32, Boolean *, Int32 *, StringRef);
+    extern void jsHttpClientOpen(StringRef cookeFile, StringRef username, StringRef password, UInt32 verifyServer, UInt32 * handle,
+                                Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
+
+    extern void jsHttpClientClose(UInt32 handle, Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
+
+    extern void jsHttpClientAddHeader(UInt32 handle, StringRef header, StringRef value,
+                                Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
+
+    extern void jsHttpClientRemoveHeader(UInt32 handle, StringRef header, Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
+
+    extern void jsHttpClientGetHeader(UInt32 handle, StringRef header, StringRef value,
+                                Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
+
+    extern void jsHttpClientHeaderExists(UInt32 handle, StringRef header, UInt32 * headerExists, StringRef value,
+                                Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
+
+    extern void jsHttpClientListHeaders(UInt32 hanlde, StringRef list,
+                                Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
+
+    extern void jsHttpClientMethod(HttpClientMethodId methodId, UInt32 handle, StringRef url, StringRef outputFile,
+                                TypeRef bufferType, StringRef* bufferData, Int32 * timeout, StringRef header, StringRef body,
+                                UInt32 * statusCode, Boolean * errorstatus, Int32 * errorCode, StringRef errorSource, OccurrenceRef occurence);
+
+    extern void jsHttpClientConfigCORS(UInt32 handle, UInt32 includeCrendetialsDuringCORS,
+                                Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
 }
 #endif
 

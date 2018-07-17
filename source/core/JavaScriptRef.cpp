@@ -21,8 +21,7 @@ namespace Vireo {
 #if kVireoOS_emscripten
 extern "C" {
     // JavaScript Reference methods to call from JS land
-    // Parameters: returnValue*, reference
-    extern void jsIsNotAJavaScriptRefnum(Boolean*, JavaScriptRefNum*);
+    extern void jsIsNotAJavaScriptRefnum(Boolean* returnValue, JavaScriptRefNum* javaScriptRefNum);
 }
 #endif
 
