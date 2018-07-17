@@ -29,10 +29,13 @@ enum { kNIError_ObjectReferenceIsInvalid = 1055 };  // TODO(spathiwa) move to co
 #if kVireoOS_emscripten
 extern "C" {
     // JavaScript function prototypes
-    // Parameters: controlRefVIName, controlId, propertyName, tempVariableType, tempVariableDataPtr, errorStatus*, errorCode*, errorSource*
-    extern void jsPropertyNodeWrite(StringRef, StringRef, StringRef, TypeRef, void *, Boolean *, Int32 *, StringRef);
-    // Parameters: controlRefVIName, controlId, propertyName, tempVariableType, tempVariableDataPtr, errorStatus*, errorCode*, errorSource*
-    extern void jsPropertyNodeRead(StringRef, StringRef, StringRef, TypeRef, void *, Boolean *, Int32 *, StringRef);
+    extern void jsPropertyNodeWrite(StringRef viName, StringRef controlId, StringRef propertyName,
+                                    TypeRef tempVariableType, void * tempVariableData,
+                                    Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
+
+    extern void jsPropertyNodeRead(StringRef viName, StringRef controlId, StringRef propertyName,
+                                    TypeRef tempVariableType, void * tempVariableData,
+                                    Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
 }
 #endif
 

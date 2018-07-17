@@ -27,10 +27,8 @@ namespace Vireo {
 #if kVireoOS_emscripten
 extern "C" {
     // JavaScript function prototypes
-    // Parameters: viName, controlId, eventId, eventOracleIndex
-    extern void jsRegisterForControlEvent(StringRef, UInt32, UInt32, UInt32);
-    // Parameters: viName, controlId, eventId, eventOracleIndex
-    extern void jsUnRegisterForControlEvent(StringRef, UInt32, UInt32, UInt32);
+    extern void jsRegisterForControlEvent(StringRef viName, UInt32 controlId, UInt32 eventId, UInt32 eventOracleIndex);
+    extern void jsUnRegisterForControlEvent(StringRef viName, UInt32 controlId, UInt32 eventId, UInt32 eventOracleIndex);
 }
 #endif
 

@@ -434,7 +434,7 @@
         Module.javaScriptInvoke.jsJavaScriptInvoke = function (
             occurrencePointer,
             functionNamePointer,
-            returnPointer,
+            returnValueTypeAndDataPointer,
             parametersPointer,
             parametersCount,
             errorCheckingEnabled,
@@ -470,11 +470,11 @@
                 return;
             }
 
-            var returnTypeName = getParameterTypeString(returnPointer, 0);
+            var returnTypeName = getParameterTypeString(returnValueTypeAndDataPointer, 0);
             var returnValuePointer = undefined;
             if (returnTypeName !== 'StaticTypeAndData') {
                 // User doesn't want return value. We're passing '*' for the return in VIA code, we get StaticTypeAndData
-                returnValuePointer = JavaScriptInvoke_GetParameterPointer(returnPointer, 0);
+                returnValuePointer = JavaScriptInvoke_GetParameterPointer(returnValueTypeAndDataPointer, 0);
             }
             if (returnTypeName === 'Array') {
                 returnTypeName += getArrayElementTypeString(returnValuePointer);
@@ -513,10 +513,10 @@
             return;
         };
 
-        Module.javaScriptInvoke.jsIsNotAJavaScriptRefnum = function (returnPointer, javaScriptRefNumPointer) {
+        Module.javaScriptInvoke.jsIsNotAJavaScriptRefnum = function (returnValuePointer, javaScriptRefNumPointer) {
             var cookie = Data_ReadJavaScriptRefNum(javaScriptRefNumPointer);
             var isNotAJavaScriptRefnum = !hasCachedRefNum(cookie);
-            Module.eggShell.dataWriteBoolean(returnPointer, isNotAJavaScriptRefnum);
+            Module.eggShell.dataWriteBoolean(returnValuePointer, isNotAJavaScriptRefnum);
         };
     };
 

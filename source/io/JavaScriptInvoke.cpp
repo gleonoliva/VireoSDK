@@ -24,9 +24,10 @@ namespace Vireo {
 #if kVireoOS_emscripten
 extern "C" {
     // JavaScript function prototypes
-    // Parameters: occurrence, functionName, returnValue, parameters*, parametersCount, errorCheckingEnabled, errorStatus*, errorCode*, errorSource*
     // Remark : errorCheckingEnabled is currently unused. It was added to support an optional error checking feature just like the SLI does.
-    extern void jsJavaScriptInvoke(OccurrenceRef, StringRef, void *, void *, Int32, Boolean, Boolean *, Int32 *, StringRef);
+    extern void jsJavaScriptInvoke(OccurrenceRef occurence, StringRef functionName, void * returnValueTypeAndData,
+                                    void * parameters, Int32 parametersCount, Boolean errorCheckingEnabled,
+                                    Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
 }
 #endif
 
