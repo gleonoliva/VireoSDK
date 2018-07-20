@@ -24,7 +24,7 @@ namespace Vireo {
 
 #if kVireoOS_emscripten
 extern "C" {
-    extern void jsExecutionContextFPSync(StringRef fpIdStr);
+    extern void jsExecutionContextFPSync(StringRef fpString);
     extern Double jsCurrentBrowserFPS(void);
 }
 #endif

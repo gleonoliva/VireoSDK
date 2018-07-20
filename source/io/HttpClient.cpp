@@ -46,7 +46,7 @@ extern "C" {
     extern void jsHttpClientHeaderExists(UInt32 handle, StringRef header, UInt32 * headerExists, StringRef value,
                                 Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
 
-    extern void jsHttpClientListHeaders(UInt32 hanlde, StringRef list,
+    extern void jsHttpClientListHeaders(UInt32 handle, StringRef list,
                                 Boolean * errorStatus, Int32 * errorCode, StringRef errorSource);
 
     extern void jsHttpClientMethod(HttpClientMethodId methodId, UInt32 handle, StringRef url, StringRef outputFile,
